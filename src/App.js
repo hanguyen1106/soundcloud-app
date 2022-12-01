@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { publicRoutes } from '~/routes';
 import DefaultLayout from '~/layouts/DefaultLayout';
 
-const currentUser = true;
+const currentUser = false;
 
 function App() {
     return (
@@ -14,6 +14,9 @@ function App() {
                         if (!currentUser && route.path === '/') {
                             const Page = route.component;
                             return <Route key={index} path={route.path} element={<Page />} />;
+                        }
+                        if (currentUser && route.path === '/') {
+                            return <Route key={index} path={route.path} element={<Navigate to="discover" />} />;
                         }
                         let Layout = DefaultLayout;
                         if (route.layout) {

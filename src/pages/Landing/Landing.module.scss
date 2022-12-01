@@ -1,0 +1,80 @@
+.wrapper {
+    background-color: #ccc;
+    width: 1240px;
+    margin: 0 auto;
+}
+
+.banner {
+    width: 100%;
+    border-top: 4px solid var(--primary-color);
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+}
+
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+}
+
+.logo {
+    width: 48px;
+    height: 22px;
+}
+
+.logo-title {
+    color: #fff;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    padding-left: 4px;
+}
+
+.account-box {
+    display: flex;
+    button + button {
+        margin-left: 8px;
+    }
+}
+
+.slogan {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 90px 0 130px;
+    h1 {
+        font-size: 3.6rem;
+        text-shadow: #050505 0px 0px 3px;
+        margin: 0px 0px 8px;
+        font-weight: 100;
+        line-height: 4.6rem;
+    }
+    p {
+        max-width: 530px;
+        text-align: center;
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        margin: 0px 0px 10px;
+        text-shadow: #050505 0px 0px 3px;
+    }
+}
+
+.content {
+}
+
+.teaser {
+}
+
+.arstis {
+}
+
+.footer {
+}

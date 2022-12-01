@@ -1,0 +1,37 @@
+.wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Interstate';
+    font-size: 1.6rem;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 3px;
+    white-space: nowrap;
+    cursor: pointer;
+    // Normal-size
+    padding: 13px 22px;
+    font-weight: 100;
+}
+
+// Button size
+
+.small {
+    font-size: 1.4rem;
+    padding: 6px 15px;
+    font-weight: 100;
+}
+
+.unDecoration {
+    font-size: 1.4rem;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+.outline {
+    border-color: #fff;
+    background-color: transparent;
+}
