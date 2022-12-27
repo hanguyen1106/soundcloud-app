@@ -3,25 +3,29 @@
     justify-content: center;
     align-items: center;
     font-family: 'Interstate';
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     outline: none;
     border: none;
     background-color: var(--primary-color);
-    color: var(--text-color);
+    color: var(--button-color);
     border: 1px solid var(--primary-color);
     border-radius: 3px;
     white-space: nowrap;
     cursor: pointer;
     // Normal-size
-    padding: 13px 22px;
+    min-width: 210px;
+    height: 46px;
+    padding: 0 22px;
     font-weight: 100;
 }
 
 // Button size
 
 .small {
+    min-width: unset;
+    height: 30px;
     font-size: 1.4rem;
-    padding: 6px 15px;
+    padding: 0 15px;
     font-weight: 100;
 }
 

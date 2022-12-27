@@ -9,7 +9,8 @@
 
 :root {
     --primary-color: #ff5500;
-    --text-color: #ffffff;
+    --text-color: #333;
+    --button-color: #fff;
 }
 
 // Reset CSS
@@ -17,6 +18,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+input {
+    font-family: 'Interstate';
 }
 
 html {
@@ -27,6 +32,7 @@ body {
     font-family: 'Interstate', sans-serif;
     font-size: 1.6rem;
     overflow-y: scroll;
+    background-color: #f2f2f2;
 }
 
 // Scrollbar CSS

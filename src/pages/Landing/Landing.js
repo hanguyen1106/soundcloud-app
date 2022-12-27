@@ -3,7 +3,60 @@ import styles from './Landing.module.scss';
 
 import Button from '~/components/Button';
 import bannerImage from '~/assets/images/landing-banner.jpg';
+import SearchInput from '~/components/SearchInput';
+import { Grid } from '@mui/material';
 const cx = classNames.bind(styles);
+
+const songList = [
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+    {
+        songTitle: 'Roi Mot Ngay - Dewie',
+        songAthor: 'Dewie',
+    },
+];
 
 function Landing() {
     const BackgroundBannerStyle = {
@@ -44,7 +97,41 @@ function Landing() {
                     <Button>Sign up for free</Button>
                 </div>
             </div>
-            <div className={cx('content')}></div>
+            <div className={cx('trending')}>
+                <div className={cx('search-box')}>
+                    <SearchInput type="search" placeholder="Search for artists, bands, tracks, podcasts" />
+                    <span>or</span>
+                    <Button style={{ minWidth: 'unset' }}>Upload your own</Button>
+                </div>
+                <h1 className={cx('caption')}>Hear what’s trending for free in the SoundCloud community</h1>
+                <div className={cx('song-list')}>
+                    <Grid container>
+                        {songList.map((songItem, index) => {
+                            return (
+                                <Grid
+                                    key={index}
+                                    item
+                                    xs={2}
+                                    display="flex"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                >
+                                    <div className={cx('song-item')}>
+                                        <img
+                                            className={cx('song-thumbnail')}
+                                            src={'https://i1.sndcdn.com/artworks-pLhhnIwz789avtCc-J9EIbg-t200x200.jpg'}
+                                            alt={''}
+                                        />
+                                        <h3 className={cx('song-title')}>{songItem.songTitle}</h3>
+                                        <h4 className={cx('song-author')}>{songItem.songAthor}</h4>
+                                    </div>
+                                </Grid>
+                            );
+                        })}
+                    </Grid>
+                </div>
+            </div>
+
             <div className={cx('teaser')}>teaser</div>
             <div className={cx('artist')}>artist</div>
             <div className={cx('footer')}>footer</div>

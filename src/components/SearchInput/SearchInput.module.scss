@@ -1,0 +1,25 @@
+.wrapper {
+    position: relative;
+}
+.default {
+    color: #666666;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    padding: 13px 16px;
+    min-width: 600px;
+    border: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #999;
+    padding: 12px 20px;
+    cursor: pointer;
+}
