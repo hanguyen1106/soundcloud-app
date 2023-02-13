@@ -3,7 +3,7 @@ import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Button({ to, href, children, className, outline, small, unDecoration, ...passProps }) {
+function Button({ ref, to, href, children, className, outline, small, unDecoration, ...passProps }) {
     let Component = 'button';
     const props = {
         ...passProps,
@@ -23,9 +23,8 @@ function Button({ to, href, children, className, outline, small, unDecoration, .
         small,
         unDecoration,
     });
-
     return (
-        <Component className={classes} {...props}>
+        <Component ref={ref} className={classes} {...props}>
             {children}
         </Component>
     );

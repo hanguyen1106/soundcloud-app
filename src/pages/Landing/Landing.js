@@ -3,6 +3,10 @@ import styles from './Landing.module.scss';
 
 import Button from '~/components/Button';
 import bannerImage from '~/assets/images/landing-banner.jpg';
+import teaserMobile from '~/assets/images/teaser-mobile.jpg';
+import appStoreIcon from '~/assets/images/app-store.png';
+import googlePlayIcon from '~/assets/images/google-play.png';
+import creatorFeature from '~/assets/images/creator-feature.jpg';
 import SearchInput from '~/components/SearchInput';
 import { Grid } from '@mui/material';
 const cx = classNames.bind(styles);
@@ -63,6 +67,18 @@ function Landing() {
         backgroundImage: `url('${bannerImage}')`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+    };
+    const teaserStyle = {
+        backgroundImage: `url('${teaserMobile}')`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+    };
+    const creatorStyle = {
+        backgroundImage: `url('${creatorFeature}')`,
+        backgroundPosition: 'center',
+        backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
     };
 
@@ -130,10 +146,43 @@ function Landing() {
                         })}
                     </Grid>
                 </div>
+                <div className={cx('explore')}>
+                    <Button>Explore trending playlists</Button>
+                </div>
             </div>
-
-            <div className={cx('teaser')}>teaser</div>
-            <div className={cx('artist')}>artist</div>
+            <div className={cx('teaser')}>
+                <div className={cx('mobile-device')} style={teaserStyle}></div>
+                <div className={cx('teaser-caption')}>
+                    <h1>Never Stop Listening</h1>
+                    <h2>SoundCloud is available on Web, iOS, Android, Sonos, Chromecast, and Xbox One.</h2>
+                    <div className={cx('download')}>
+                        <a
+                            href={'https://apps.apple.com/us/app/soundcloud-discover-new-music/id336353151'}
+                            className={cx('app-store')}
+                        >
+                            <img src={appStoreIcon} alt="app-store" />
+                        </a>
+                        <a
+                            href={'https://play.google.com/store/apps/details?id=com.soundcloud.android'}
+                            className={cx('google-play')}
+                        >
+                            <img src={googlePlayIcon} alt="google-play" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div className={cx('creator')} style={creatorStyle}>
+                <div className={cx('creator-feature')}>
+                    <h1>Calling all creators</h1>
+                    <h2>
+                        Get on SoundCloud to connect with fans, share your sounds, and grow your audience. What are you
+                        waiting for?
+                    </h2>
+                    <Button href={'https://google.com'} outline className={cx('find-out')}>
+                        Find out more
+                    </Button>
+                </div>
+            </div>
             <div className={cx('footer')}>footer</div>
         </div>
     );
