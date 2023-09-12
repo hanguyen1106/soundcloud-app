@@ -1,0 +1,35 @@
+.popup-wrap {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.popup-content {
+    padding: 25px;
+}
+
+.popup-content {
+    button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 8px 0;
+        font-size: 1.6rem;
+        height: 40px;
+    }
+
+    .popup-icon {
+        margin-right: 5px;
+    }
+}
+
+.popup-facebookBtn {
+    background-color: #3578e5;
+    border: none;
+}
+
+.popup-appleBtn {
+    background-color: #000;
+    border: none;
+}

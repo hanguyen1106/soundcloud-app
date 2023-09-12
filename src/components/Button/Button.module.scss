@@ -38,7 +38,14 @@ a {
     border: none;
     padding: 0;
 }
+
 .outline {
     border-color: #fff;
+    background-color: transparent;
+}
+
+.white {
+    color: #333;
+    border: 1px solid #e5e5e5;
     background-color: transparent;
 }

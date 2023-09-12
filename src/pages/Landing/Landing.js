@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Landing.module.scss';
+import Popup from 'reactjs-popup';
 
 import Button from '~/components/Button';
 import bannerImage from '~/assets/images/landing-banner.jpg';
@@ -8,59 +9,11 @@ import appStoreIcon from '~/assets/images/app-store.png';
 import googlePlayIcon from '~/assets/images/google-play.png';
 import creatorFeature from '~/assets/images/creator-feature.jpg';
 import SearchInput from '~/components/SearchInput';
+import LoginForm from '~/components/LoginForm';
 import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
 const cx = classNames.bind(styles);
-
-const songList = [
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-    {
-        songTitle: 'Roi Mot Ngay - Dewie',
-        songAthor: 'Dewie',
-    },
-];
 
 function Landing() {
     const BackgroundBannerStyle = {
@@ -71,7 +24,7 @@ function Landing() {
     };
     const teaserStyle = {
         backgroundImage: `url('${teaserMobile}')`,
-        backgroundPosition: 'center',
+        backgroundPosition: 'bottom',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     };
@@ -81,6 +34,18 @@ function Landing() {
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
     };
+    const [songs, setSongs] = useState([]);
+
+    useEffect(() => {
+        const response = fetch('http://localhost:8081/api/songs');
+        response
+            .then((oRes) => {
+                return oRes.json();
+            })
+            .then((oRes) => {
+                setSongs(oRes);
+            });
+    }, []);
 
     return (
         <div className={cx('wrapper')}>
@@ -95,9 +60,18 @@ function Landing() {
                         <h1 className={cx('logo-title')}>SOUNDCLOUD</h1>
                     </div>
                     <div className={cx('account-box')}>
-                        <Button outline small>
-                            Sign in
-                        </Button>
+                        <Popup
+                            trigger={
+                                <Button outline small>
+                                    Sign in
+                                </Button>
+                            }
+                            modal={true}
+                            position="right center"
+                        >
+                            <LoginForm />
+                        </Popup>
+
                         <Button small>Create account</Button>
                         <Button unDecoration small>
                             For Artists
@@ -122,7 +96,9 @@ function Landing() {
                 <h1 className={cx('caption')}>Hear what’s trending for free in the SoundCloud community</h1>
                 <div className={cx('song-list')}>
                     <Grid container>
-                        {songList.map((songItem, index) => {
+                        {songs.map((songItem, index) => {
+                            const url = songItem['song_url'];
+                            console.log(url);
                             return (
                                 <Grid
                                     key={index}
@@ -133,13 +109,9 @@ function Landing() {
                                     alignItems="center"
                                 >
                                     <div className={cx('song-item')}>
-                                        <img
-                                            className={cx('song-thumbnail')}
-                                            src={'https://i1.sndcdn.com/artworks-pLhhnIwz789avtCc-J9EIbg-t200x200.jpg'}
-                                            alt={''}
-                                        />
-                                        <h3 className={cx('song-title')}>{songItem.songTitle}</h3>
-                                        <h4 className={cx('song-author')}>{songItem.songAthor}</h4>
+                                        <img className={cx('song-thumbnail')} src={`${url}`} alt={''} />
+                                        <h3 className={cx('song-title')}>{songItem['song_name']}</h3>
+                                        <h4 className={cx('song-author')}>{songItem['song_nickname']}</h4>
                                     </div>
                                 </Grid>
                             );
@@ -183,7 +155,38 @@ function Landing() {
                     </Button>
                 </div>
             </div>
-            <div className={cx('footer')}>footer</div>
+            <div className={cx('footer')}>
+                <div className={cx('footer-wrap')}>
+                    <h1>Thanks for listening. Now join in.</h1>
+                    <h2>Save tracks, follow artists and build playlists. All for free.</h2>
+                    <Button className={cx('footer-create')}>Create account</Button>
+                    <div className={cx('footer-bottom')}>
+                        <p>Already have an account?</p>
+                        <Button className={cx('footer-signin')} white>
+                            Sign in
+                        </Button>
+                    </div>
+                </div>
+                <div className={cx('footer-direction')}>
+                    <Link>Directory</Link>&nbsp;⁃&nbsp;
+                    <Link>About us</Link>&nbsp;⁃&nbsp;
+                    <Link>Artist Resources</Link>&nbsp;⁃&nbsp;
+                    <Link>Blog</Link>&nbsp;⁃&nbsp;
+                    <Link>Jobs</Link>&nbsp;⁃&nbsp;
+                    <Link>Developers</Link>&nbsp;⁃&nbsp;
+                    <Link>Help</Link>&nbsp;⁃&nbsp;
+                    <Link>Legal</Link>&nbsp;⁃&nbsp;
+                    <Link>Privacy</Link>&nbsp;⁃&nbsp;
+                    <Link>Cookie Policy</Link>&nbsp;⁃&nbsp;
+                    <Link>Consent Manager</Link>&nbsp;⁃&nbsp;
+                    <Link>Imprint</Link>&nbsp;⁃&nbsp;
+                    <Link>Charts</Link>
+                </div>
+                <div className={cx('footer-language')}>
+                    <p className={cx('footer-language-button')}>Language: </p>
+                    <p className={cx('footer-language-text')}>English (US)</p>
+                </div>
+            </div>
         </div>
     );
 }
